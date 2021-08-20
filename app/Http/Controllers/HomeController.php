@@ -15,10 +15,13 @@ class HomeController extends Controller
         return Inertia::render('MyRequest/Index', ['complains' => $complains]);
     }
 
-    public function wolcamePage () {
-        $complains = Complain::all();
+    public function wellcome () {
+
+        $inProccess = Complain::where('status', 'pending')->get();
+        $inResolved = Complain::where('status', 'resoleved')->get();
         return Inertia::render('Welcome', [
-            'complains' => $complains
+            'inProccess' => $inProccess,
+            'inResolved' => $inResolved
         ]);
     }
 }

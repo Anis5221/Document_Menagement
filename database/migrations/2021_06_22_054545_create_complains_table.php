@@ -16,7 +16,7 @@ class CreateComplainsTable extends Migration
         Schema::create('complains', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('request_id');
+            $table->string('request_id');
             $table->string('head_line');
             $table->string('details');
             $table->string('branch_name');

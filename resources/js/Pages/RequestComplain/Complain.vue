@@ -107,6 +107,8 @@
             JetButton,
         },
 
+        props:{errors:{}},
+
         data() {
             return {
                 form: this.$inertia.form({

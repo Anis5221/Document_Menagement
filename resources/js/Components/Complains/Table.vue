@@ -48,7 +48,7 @@
                         <td class="py-4 px-2 ">
                             {{complain.request_id}}
                         </td>
-                        <td class="py-4 px-2 ">
+                        <td class="py-4 px-2" v-if="complain">
                             <inertia-link class="hover:underline text-blue-500 hover:text-blue-800" :href="route('complain.show',{id:complain.id})">{{complain.head_line}}</inertia-link>
                         </td>
                         <td class="py-4 px-2 ">

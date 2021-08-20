@@ -26,12 +26,12 @@
         },
         data () {
             return {
-                data:{}
+                data:[""]
             }
         },
         mounted () {
             this.data = this.complain
-            
+
         }
     }
 </script>

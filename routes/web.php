@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,17 +18,17 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [HomeController::class, "wolcamePage"]);
+Route::get('/', function(){
+    return Inertia::render('Auth/Login');
+});
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->name('dashboard');
+Route::prefix('home')->middleware('auth:sanctum')->group(function () {
+    Route::get('/', [HomeController::class, 'wellcome'])->name('home');
+});
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/complain', function () {
-//     return Inertia::render('RequestComplain/Complain');
-// })->name('complain');
 
 Route::resource('complain', ComplainController::class)->middleware('auth:sanctum');
 
 // my request section .....
 Route::get('/myrequest', [HomeController::class, 'index'])->name('myrequest')->middleware('auth:sanctum');
+

@@ -15,9 +15,11 @@
                   </thead>
 
                   <tbody class="divide-y divide-gray-200">
-                      <tr v-for="one in 10" :key="one">
-                          <td class="py-2 px-4">Request Id: </td>
-                          <td class="flex justify-center items-center py-2">{{data.request_id}}</td>
+                      <tr v-for="(result, name) in data" :key="name">
+                          <td class="py-2 px-4">{{name}} </td>
+
+                          <td v-if="name == 'file'" class="flex justify-center items-center py-2"> <a class="text-blue-600 underline" href="">{{result}}</a> </td>
+                          <td v-else class="flex justify-center items-center py-2">{{result}}</td>
                       </tr>
 
                   </tbody>
